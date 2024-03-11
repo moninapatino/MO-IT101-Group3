@@ -26,7 +26,7 @@ public class EmployeeAttendance extends javax.swing.JFrame {
           
     String url = "jdbc:postgresql://localhost:5432/postgres";
     String user = "postgres";
-    String password = "admin";
+    String password = "@dmin123";
     
     public EmployeeAttendance() {
         initComponents();
@@ -91,6 +91,20 @@ public class EmployeeAttendance extends javax.swing.JFrame {
         return userList;
     }
     
+    public void getSum(){
+        try{
+            long sum = 0;
+            for(long x = 0; x < attendance_table.getRowCount(); x++)
+            { 
+                sum = sum + Long.parseLong(attendance_table.getValueAt((int) x, 7).toString());
+                
+            }
+        
+            hoursworked_field.setText(Long.toString((int) sum));
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(null,e);
+        }
+    }
 
    
     @SuppressWarnings("unchecked")
@@ -108,6 +122,9 @@ public class EmployeeAttendance extends javax.swing.JFrame {
         noe_title1 = new javax.swing.JLabel();
         id_field = new javax.swing.JTextField();
         dateAndTime1 = new javax.swing.JLabel();
+        hoursworked_lbl = new javax.swing.JLabel();
+        hoursworked_field = new javax.swing.JTextField();
+        getTotal_btn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -188,6 +205,24 @@ public class EmployeeAttendance extends javax.swing.JFrame {
         dateAndTime1.setForeground(new java.awt.Color(217, 217, 217));
         dateAndTime1.setText("Time");
 
+        hoursworked_lbl.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
+        hoursworked_lbl.setForeground(new java.awt.Color(217, 217, 217));
+        hoursworked_lbl.setText("Number of Hours Worked:");
+
+        hoursworked_field.setEditable(false);
+        hoursworked_field.setBackground(new java.awt.Color(217, 217, 217));
+        hoursworked_field.setForeground(new java.awt.Color(29, 53, 87));
+
+        getTotal_btn.setBackground(new java.awt.Color(29, 53, 87));
+        getTotal_btn.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
+        getTotal_btn.setForeground(new java.awt.Color(217, 217, 217));
+        getTotal_btn.setText("Get Total");
+        getTotal_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                getTotal_btnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
@@ -209,7 +244,13 @@ public class EmployeeAttendance extends javax.swing.JFrame {
                         .addGap(35, 35, 35)
                         .addComponent(noe_title1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(id_field, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(id_field, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(93, 93, 93)
+                        .addComponent(hoursworked_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(hoursworked_field, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(getTotal_btn))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 816, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
@@ -226,12 +267,15 @@ public class EmployeeAttendance extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(noe_title1)
-                    .addComponent(id_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(id_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hoursworked_lbl)
+                    .addComponent(hoursworked_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(getTotal_btn))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(backButton)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -263,7 +307,14 @@ public class EmployeeAttendance extends javax.swing.JFrame {
         TableRowSorter<DefaultTableModel> table=new TableRowSorter<>(attendanceTable);
         attendance_table.setRowSorter(table);
         table.setRowFilter(RowFilter.regexFilter(id_field.getText()));
+        
+        
     }//GEN-LAST:event_id_fieldKeyReleased
+
+    private void getTotal_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getTotal_btnActionPerformed
+        
+        getSum();
+    }//GEN-LAST:event_getTotal_btnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -307,7 +358,10 @@ public class EmployeeAttendance extends javax.swing.JFrame {
     private javax.swing.JPanel darkbluePanel;
     private javax.swing.JLabel dateAndTime;
     private javax.swing.JLabel dateAndTime1;
+    private javax.swing.JButton getTotal_btn;
     private javax.swing.JLabel greetings;
+    private javax.swing.JTextField hoursworked_field;
+    private javax.swing.JLabel hoursworked_lbl;
     private javax.swing.JTextField id_field;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel mainPanel;

@@ -27,7 +27,7 @@ public class LeaveManagement extends javax.swing.JFrame {
           
     String url = "jdbc:postgresql://localhost:5432/postgres";
     String user = "postgres";
-    String password = "admin";
+    String password = "@dmin123";
     
     public LeaveManagement() {
         initComponents();
@@ -79,8 +79,7 @@ public class LeaveManagement extends javax.swing.JFrame {
                     v.add(rs.getString("date"));
                     v.add(rs.getString("leave_type"));
                     v.add(rs.getString("status"));
-                                    
-                
+                    
                 }
                 leave_table.addRow(v);
             }    

@@ -21,7 +21,7 @@ public class EmployeeProfile extends javax.swing.JFrame {
     
     String url = "jdbc:postgresql://localhost:5432/postgres";
     String user = "postgres";
-    String password = "admin";
+    String password = "@dmin123";
  
     public EmployeeProfile(){
         initComponents();
@@ -238,7 +238,7 @@ public class EmployeeProfile extends javax.swing.JFrame {
                                     .addComponent(bday_field)))
                             .addGroup(mainPanelLayout.createSequentialGroup()
                                 .addComponent(en_title)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                                 .addComponent(employeeNumber_field, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(mainPanelLayout.createSequentialGroup()
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

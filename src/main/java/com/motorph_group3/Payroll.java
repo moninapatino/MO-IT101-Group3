@@ -24,11 +24,10 @@ public class Payroll extends javax.swing.JFrame {
     Connection conn = null;
     ResultSet rs = null;
     PreparedStatement pst = null;
-    //int q, i, id, deleteItem;
-
+    
     private static final String url = "jdbc:postgresql://localhost:5432/postgres";
     private static final String user = "postgres";
-    private static final String password = "admin";
+    private static final String password = "@dmin123";
     
     double hourlyRate;
     double hoursWorked;
@@ -43,15 +42,11 @@ public class Payroll extends javax.swing.JFrame {
     double pagibigC;
     double grossPay;
     double netPay;
-    double tax;
-    double tax1;
     double tax2;
     double tax3;
     double taxF;
     
-    
-    
-    
+       
     public Payroll() {
         initComponents();
         setTitle ("Employee Payroll");
@@ -74,12 +69,12 @@ public class Payroll extends javax.swing.JFrame {
     LocalDateTime now =LocalDateTime.now();
     time.setText(times.format(now));
     }
-      public final void date(){
+    public final void date(){
     DateTimeFormatter dates = DateTimeFormatter.ofPattern("MM/dd/YYYY");
     LocalDateTime now =LocalDateTime.now();
     date.setText(dates.format(now));
     }
-      public void netPay() {
+    public void netPay() {
         taxF= Double.parseDouble(tax_field.getText());
         
         netPay = grossPay - taxF;
@@ -89,9 +84,7 @@ public class Payroll extends javax.swing.JFrame {
         
       }
     
-        
-
-    
+      
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -651,12 +644,7 @@ public class Payroll extends javax.swing.JFrame {
         grossPayF = new DecimalFormat("#.0#").format(grossPay);
         grosspay_field.setText(grossPayF);
                              
-        //netPay = grossPay - taxF;
-        //taxF= Double.parseDouble(tax_field.getText());
-        //String netPayF = Double.toString(netPay);
-        //netPayF = new DecimalFormat("#.0#").format(netPay);
-        //netpay_field.setText(netPayF);
-                
+        
           
     }//GEN-LAST:event_calculateButtonActionPerformed
 
@@ -692,8 +680,7 @@ public class Payroll extends javax.swing.JFrame {
                 
                 String basic_salary =rs.getString("basic_salary");
                 basicsalary_field.setText(basic_salary);
-                
-                                                
+                                              
             }
             
         }
@@ -741,9 +728,8 @@ public class Payroll extends javax.swing.JFrame {
         tax1_radio.setSelected(false);
         tax2_radio.setSelected(false);
         tax3_radio.setSelected(false);
-        
-        
-                
+       
+             
     }//GEN-LAST:event_clearButton1ActionPerformed
 
     private void tax1_radioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tax1_radioActionPerformed
