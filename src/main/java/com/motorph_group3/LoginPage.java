@@ -135,13 +135,15 @@ public class LoginPage extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Log in Successful");
                 EmployeePortal employeePortal = new EmployeePortal ();
                 employeePortal.show();
+                
+                dispose();  
         } else{
             JOptionPane.showMessageDialog(null, "Wrong User ID or Password");  
         } 
         else{   
             JOptionPane.showMessageDialog(null, "Please Fill Out Password");
         }
-    dispose();    
+  
     }//GEN-LAST:event_logInButtonActionPerformed
 
   

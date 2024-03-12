@@ -9,9 +9,7 @@ import java.sql.ResultSet;
 import javax.swing.WindowConstants;
 import com.motorph_util.Postgresql;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import javax.swing.*;
 
 
 public class EmployeeProfile extends javax.swing.JFrame {
@@ -19,9 +17,9 @@ public class EmployeeProfile extends javax.swing.JFrame {
     ResultSet rs = null;
     PreparedStatement pst = null;
     
-    String url = "jdbc:postgresql://localhost:5432/postgres";
-    String user = "postgres";
-    String password = "@dmin123";
+    private static final String url = "jdbc:postgresql://localhost:5432/postgres";
+    private static final String user = "postgres";
+    private static final String password = "@dmin123";
  
     public EmployeeProfile(){
         initComponents();

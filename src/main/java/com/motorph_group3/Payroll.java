@@ -8,15 +8,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Vector;
 import javax.swing.WindowConstants;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
-//import javax.swing.*;
+
 
 
 
@@ -351,7 +348,7 @@ public class Payroll extends javax.swing.JFrame {
 
         tax1_radio.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
         tax1_radio.setForeground(new java.awt.Color(217, 217, 217));
-        tax1_radio.setText("Gross Pay = 20,832 and below");
+        tax1_radio.setText("Gross Pay = 0 - 20832");
         tax1_radio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tax1_radioActionPerformed(evt);
@@ -360,7 +357,7 @@ public class Payroll extends javax.swing.JFrame {
 
         tax2_radio.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
         tax2_radio.setForeground(new java.awt.Color(217, 217, 217));
-        tax2_radio.setText("Gross Pay = 20,833 to below 33,333");
+        tax2_radio.setText("Gross Pay = 20833 - 33332");
         tax2_radio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tax2_radioActionPerformed(evt);
@@ -369,7 +366,7 @@ public class Payroll extends javax.swing.JFrame {
 
         tax3_radio.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
         tax3_radio.setForeground(new java.awt.Color(217, 217, 217));
-        tax3_radio.setText("Gross Pay = 33,333 to below 66,667");
+        tax3_radio.setText("Gross Pay = 33334 - 66666");
         tax3_radio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tax3_radioActionPerformed(evt);
@@ -445,34 +442,31 @@ public class Payroll extends javax.swing.JFrame {
                                                     .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addComponent(grosspay_field, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addComponent(basicsalary_field, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGap(104, 104, 104)
+                                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(mainPanelLayout.createSequentialGroup()
-                                        .addGap(117, 117, 117)
-                                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(mainPanelLayout.createSequentialGroup()
-                                                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(pHealth_label)
-                                                    .addComponent(sss_label, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(pagibig_label, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(td_label, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(tax_label, javax.swing.GroupLayout.Alignment.TRAILING))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(sss_field)
-                                                    .addComponent(pHealth_field)
-                                                    .addComponent(pagibig_field)
-                                                    .addComponent(totalD_field)
-                                                    .addComponent(tax_field, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addGroup(mainPanelLayout.createSequentialGroup()
-                                                .addComponent(netpay_label)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(netpay_field, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(tax1_radio)
-                                                .addComponent(tax2_radio)
-                                                .addComponent(tax3_radio))))
+                                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(pHealth_label)
+                                            .addComponent(sss_label, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(pagibig_label, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(td_label, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(tax_label, javax.swing.GroupLayout.Alignment.TRAILING))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(sss_field)
+                                            .addComponent(pHealth_field)
+                                            .addComponent(pagibig_field)
+                                            .addComponent(totalD_field)
+                                            .addComponent(tax_field, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(mainPanelLayout.createSequentialGroup()
-                                        .addGap(34, 34, 34)
+                                        .addComponent(netpay_label)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(netpay_field, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(tax1_radio)
+                                        .addComponent(tax2_radio)
+                                        .addComponent(tax3_radio))
+                                    .addGroup(mainPanelLayout.createSequentialGroup()
                                         .addComponent(hoursWorked_lb)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(hoursWorked_field, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -700,8 +694,7 @@ public class Payroll extends javax.swing.JFrame {
                 }
 
             } catch (Exception ex) {
-                //Logger lgr = Logger.getLogger(Version.class.getName());
-                //lgr.log(Level.WARNING, ex.getMessage(), ex);
+                
             }
         }
     }//GEN-LAST:event_employeeid_fieldKeyReleased
@@ -748,8 +741,9 @@ public class Payroll extends javax.swing.JFrame {
         tax2 = (grossPay - 20833) *.2;
         
         if (tax2_radio.isSelected()){
-            String add1 = Double.toString(tax2);
-            tax_field.setText(add1);
+            String taxOption2 = Double.toString(tax2);
+            taxOption2 = new DecimalFormat("#.#").format(tax2);
+            tax_field.setText(taxOption2);
             
             netPay();
         }
@@ -760,8 +754,9 @@ public class Payroll extends javax.swing.JFrame {
         // tax3 radio button
         tax3 = (grossPay - 33333) * .25 + 2500;
         if (tax3_radio.isSelected()){
-            String add2 = Double.toString(tax3);
-            tax_field.setText(add2);
+            String taxOption3 = Double.toString(tax3);
+            taxOption3 = new DecimalFormat("#.#").format(tax3);
+            tax_field.setText(taxOption3);
             
             netPay();
         }

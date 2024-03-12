@@ -12,7 +12,6 @@ import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
 import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Vector;
@@ -25,9 +24,9 @@ public class LeaveManagement extends javax.swing.JFrame {
     ResultSet rs = null;
     PreparedStatement pst = null;
           
-    String url = "jdbc:postgresql://localhost:5432/postgres";
-    String user = "postgres";
-    String password = "@dmin123";
+    private static final String url = "jdbc:postgresql://localhost:5432/postgres";
+    private static final String user = "postgres";
+    private static final String password = "@dmin123";
     
     public LeaveManagement() {
         initComponents();
